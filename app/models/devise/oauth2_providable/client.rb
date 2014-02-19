@@ -3,6 +3,8 @@ class Devise::Oauth2Providable::Client < ActiveRecord::Base
   has_many :refresh_tokens
   has_many :authorization_codes
 
+  belongs_to :provider
+  
   before_validation :init_identifier, :on => :create, :unless => :identifier?
   before_validation :init_secret, :on => :create, :unless => :secret?
   validates :website, :secret, :presence => true
